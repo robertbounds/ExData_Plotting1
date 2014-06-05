@@ -1,10 +1,9 @@
-### This function, plot2(), takes no input parameter,
-### but it reads the specified csv file from the working directory 
-### then creates a png file, and writes to the file
-### a line plot of a subset of the file's data.
-
 plot2 <- function() {
-        
+        ## This function, plot2(), takes no input parameter,
+        ## but it reads the specified csv file from the working directory 
+        ## then creates a png file, and writes to the file
+        ## a line plot of a subset of the file's data.
+        ##
         ## read.csv2() reads tabular data files 
         ## where the separator "," is a ";"
         ## (which is the case for this data)
@@ -27,32 +26,24 @@ plot2 <- function() {
         ## we can greatly reduce the number of lines to be read.
         energyData <- read.csv2("household_power_consumption.txt",
                                 colClasses = "character",
-                                nrows = 2880, skip = 66636)
-        
-        ## obtain data for global active power.
-        ## convert data to numeric for plotting.
+                                nrows = 2880,
+                                skip = 66636
+                                )
         rawGlobalActivePower <- energyData[[3]]
-        globalActivePower <- as.numeric(rawGlobalActivePower)
+        globalActivePower    <- as.numeric(rawGlobalActivePower)
+        days                 <- c("Thu", "Fri", "Sat")
+        dayIndeces           <- c(1, 1440, 2880)
         
-        ## vectors created for x-axis formatting.
-        days <- c("Thu", "Fri", "Sat")
-        dayIndeces <- c(1, 1440, 2880)
+        png(file = "plot2.png", width = 480, height = 480)
         
-        ## open png file editor.
-        ## create 480px-by-480px file, plot2.png
-        png(file = "plot2.png",
-            width = 480,
-            height = 480)
-        
-        ## plot global active power data as a line type graph.
         plot(globalActivePower,
-        	 xaxt = "n", xlab = "",
-        	 ylab = "Global Active Power (kilowatts)",
-        	 type = "l")
+             xaxt = "n",
+             xlab = "",
+             ylab = "Global Active Power (kilowatts)",
+             type = "l"
+             )
         	 
-        ## annotate x-axis.
         axis(1, at = dayIndeces, labels = days)
         
-        ## close file editor.
         dev.off()
 }

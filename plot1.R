@@ -1,10 +1,9 @@
-### This function, plot1(), takes no input parameter
-### but it reads the specified csv file from the working directory 
-### then creates a png file, and writes to the file
-### a histogram of a subset of the file's data.
-
 plot1 <- function() {
-        
+        ## This function, plot1(), takes no input parameter
+        ## but it reads the specified csv file from the working directory 
+        ## then creates a png file, and writes to the file
+        ## a histogram of a subset of the file's data.
+        ##
         ## read.csv2() reads tabular data files 
         ## where the separator "," is a ";"
         ## (which is the case for this data)
@@ -27,26 +26,19 @@ plot1 <- function() {
         ## we can greatly reduce the number of lines to be read.
         energyData <- read.csv2("household_power_consumption.txt",
                                 colClasses = "character",
-                                nrows = 2880, skip = 66636)
-        
-        ## obtain data for global active power.
-        ## convert data to numeric for plotting.
+                                nrows = 2880,
+                                skip = 66636
+                                )
         rawGlobalActivePower <- energyData[[3]]
-        globalActivePower <- as.numeric(rawGlobalActivePower)
+        globalActivePower    <- as.numeric(rawGlobalActivePower)
         
-        ## open png file editor
-        ## create 480px-by-480px file, plot1.png 
-        png(file = "plot1.png",
-            width = 480,
-            height = 480)
+        png(file = "plot1.png", width = 480, height = 480)
         
-        ## plot histogram of global active power.
-        ## red color, title "Global Active Power",
-        ## x-axis label "Global Active Power (kilowatts)".
-        hist(globalActivePower, col = "red",
+        hist(globalActivePower,
+             col = "red",
              main = "Global Active Power",
-             xlab = "Global Active Power (kilowatts)")
+             xlab = "Global Active Power (kilowatts)"
+             )
         
-        ## close file editor.
         dev.off()        
 }
