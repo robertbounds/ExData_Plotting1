@@ -38,6 +38,8 @@ plot3 <- function() {
         
         png(file = "plot3.png", width = 480, height = 480)
         
+        par(bg = NA)
+        
         plot(subMeter1,
              xaxt = "n",
              xlab = "",

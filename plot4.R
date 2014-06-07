@@ -100,7 +100,7 @@ plot4 <- function() {
         
         png(file = "plot4.png", width = 480, height = 480)
         	
-	par(mfrow = c(2, 2))
+	par(mfrow = c(2, 2), bg = NA)
         
         ## plotting functions called in  this sequence 
         ## to fill the 2x2 frame as required by the assignment.

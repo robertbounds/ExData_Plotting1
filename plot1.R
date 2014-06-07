@@ -34,6 +34,8 @@ plot1 <- function() {
         
         png(file = "plot1.png", width = 480, height = 480)
         
+        par(bg = NA)
+        
         hist(globalActivePower,
              col = "red",
              main = "Global Active Power",

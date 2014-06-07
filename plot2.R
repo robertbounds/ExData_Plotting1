@@ -36,6 +36,8 @@ plot2 <- function() {
         
         png(file = "plot2.png", width = 480, height = 480)
         
+        par(bg = NA)
+        
         plot(globalActivePower,
              xaxt = "n",
              xlab = "",
